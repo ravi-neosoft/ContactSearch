@@ -1,0 +1,16 @@
+<div class="col-sm-4">
+  <%= image_tag("notification.jpg", alt: "notification bar") %>
+  <br>
+  <div id="search_result">
+    <% @contacts.each do |contact| %>
+      <div class="col-sm-12 contact">
+        <p class="contact_initial"></p>
+        <%= contact.name %>
+        <%= contact.number %>
+      </div>
+    <% end %>
+  </div>
+  <p class="number"></p>
+</div>
+<br>
+<%= render partial: 'contacts/numpad' %>
