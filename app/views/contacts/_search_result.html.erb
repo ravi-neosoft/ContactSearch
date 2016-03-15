@@ -1,7 +1,9 @@
 <% @contacts.each do |contact| %>
-  <div class="col-sm-12 contact">
-    <p class="contact_initial"></p>
-    <%= contact.name %>
-    <%= contact.number %>
+  <div class="number_holder">
+    <p class="contact_initial"><%= contact.name[0].capitalize %></p>
+    <div class="col-sm-12 contact">
+      <%= contact.name %><br>
+      <%= contact.number %>
+    </div>
   </div>
 <% end %>

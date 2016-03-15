@@ -64,7 +64,12 @@ class ContactsController < ApplicationController
   def search
     search_num = params[:num]
     search_text = Contact.get_chars(params[:num])
-    @contacts = Contact.where("number LIKE '%#{search_text}%'")
+    if search_text.empty?
+      @contacts = Contact.where("number like '%#{search_num}%'")
+    else
+      search_text = "'%" + search_text + "%'"
+      @contacts = Contact.where("CAST(number AS TEXT) like '%#{search_num}%' OR name ilike #{search_text}")
+    end
     respond_to do |format|
       format.js
     end
