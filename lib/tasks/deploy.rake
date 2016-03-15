@@ -13,7 +13,7 @@ namespace :heroku do
 
   desc "setup heroku"
   task :setup, [:app_name] => :environment do
-    puts `heroku git:clone -a contactsearch`
+    puts `heroku git:remote -a contactsearch`
   end
 
   desc "Logout from Heroku"
