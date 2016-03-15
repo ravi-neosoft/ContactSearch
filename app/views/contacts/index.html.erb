@@ -1,20 +1,24 @@
-<%= image_tag("notification.jpg", alt: "notification bar") %>
-<div class="main">
-  <br>
-  <div id="search_result">
-    <% @contacts.each do |contact| %>
-      <div class="number_holder">
-        <p class="contact_initial"><%= contact.name[0].capitalize %></p>
-        <div class="col-sm-12 contact">
-          <%= contact.name %><br>
-          <%= contact.number %>
-        </div>
+<div class="row">
+  <div class="col-sm-12">
+    <%= image_tag("notification.jpg", alt: "notification bar") %>
+    <div class="main row">
+      <br>
+      <div id="search_result">
+        <% @contacts.each do |contact| %>
+          <div class="number_holder row">
+            <p class="contact_initial"><%= contact.name[0].capitalize %></p>
+            <div class="col-sm-12 contact">
+              <%= contact.name %><br>
+              <%= contact.number %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+    <div class="inserted_number row">
+      <p class="number"></p>
+      <%= image_tag("icon.png", size: '25x25', class: "remove_num") %>
+    </div>
+    <%= render partial: 'contacts/numpad' %>
   </div>
 </div>
-<div class="inserted_number">
-  <p class="number"></p>
-  <%= image_tag("icon.png", size: '25x25', class: "remove_num") %>
-</div>
-<%= render partial: 'contacts/numpad' %>
