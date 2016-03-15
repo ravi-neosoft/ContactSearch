@@ -5,26 +5,26 @@ namespace :heroku do
     puts `wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh`
     puts ""
     puts "----------------"
-    puts "Please create a app with 'contactsearch' name on heroku and then"
+    puts "Please create a app on heroku and then"
     puts "login to your heroku account from command line using:"
     puts "heroku login"
     puts "then run heroku:setup"
   end
 
   desc "setup heroku"
-  task :setup, [:app_name] => :environment do
-    puts `heroku git:remote -a contactsearch`
+  task :setup, [:app_name] => :environment do |t, args|
+    puts `heroku git:remote -a #{args[:app_name]}`
   end
 
   desc "Logout from Heroku"
-  task :logout, [:app_name] => :environment do
+  task :logout => :environment do
     puts `heroku logout`
   end
 
   desc "Deploy app to heroku"
   task :deploy => :environment do
     puts 'Deploying site to Heroku ...'
-    puts `git push heroku --verbose`
+    puts `git push heroku master`
 
     puts 'Running database migrations ...'
     puts `heroku run rake db:migrate`
@@ -33,6 +33,7 @@ namespace :heroku do
     puts "Tagging release as '#{release_name}'"
     puts `git tag -a #{release_name} -m 'Tagged release'`
     puts `git push --tags heroku`
+    puts `heroku run rake db:seed`
 
     puts 'All done!'
   end

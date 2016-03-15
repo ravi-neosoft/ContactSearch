@@ -3,23 +3,17 @@ class Contact < ActiveRecord::Base
 
   def self.get_chars(num)
     str = []
-    num.each_char do |c|
-      str = Contact.calc_pattern(str, @@nums[c.to_i])
-    end
+    num.each_char { |c| str = Contact.calc_pattern(str, @@nums[c.to_i]) }
     return str.join("%' OR name ilike '%")
   end
 
   def self.calc_pattern(str, arr)
     h = Array.new
     if str.empty?
-      arr.each do |a|
-        h << a.to_s
-      end
+      arr.each { |a| h << a.to_s }
     else
       str.each do |c|
-        arr.each do |a|
-          h << c.to_s + a.to_s
-        end
+        arr.each { |a| h << c.to_s + a.to_s }
       end
     end
     return h
