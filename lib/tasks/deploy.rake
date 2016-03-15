@@ -1,5 +1,26 @@
 namespace :heroku do
 
+  desc "install toolbelt"
+  task :install => :environment do
+    puts `wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh`
+    puts ""
+    puts "----------------"
+    puts "Please create a app with 'contactsearch' name on heroku and then"
+    puts "login to your heroku account from command line using:"
+    puts "heroku login"
+    puts "then run heroku:setup"
+  end
+
+  desc "setup heroku"
+  task :setup, [:app_name] => :environment do
+    puts `heroku git:clone -a contactsearch`
+  end
+
+  desc "Logout from Heroku"
+  task :logout, [:app_name] => :environment do
+    puts `heroku logout`
+  end
+
   desc "Deploy app to heroku"
   task :deploy => :environment do
     puts 'Deploying site to Heroku ...'
