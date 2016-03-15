@@ -24,10 +24,20 @@ $(document).ready(function(){
     var data = {
       num: $($('.number')[0]).html()
     };
-    $.ajax({
-      url: 'search',
-      type: "get",
-      data: data
-    });
+    switch ($($('.number')[0]).html().length) {
+      case 0:
+        $.ajax({
+          url: 'contacts',
+          type: "get"
+        });
+        break;
+      default:
+        $.ajax({
+          url: 'search',
+          type: "get",
+          data: data
+        });
+        break;
+    }
   });
 });

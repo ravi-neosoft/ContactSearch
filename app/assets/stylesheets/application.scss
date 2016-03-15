@@ -37,13 +37,15 @@ img {
 .contact {
   font-size: 25px;
   display: inline-block;
-  width: 90%;
+  width: 85%;
+}
+.details{
+  width: 10%;
+  display: inline-block;
 }
 td {
   height: 50px;
   width: 50px;
-  background-color: rgba(28, 99, 153, 0.07);
-  border: 1px solid black;
 }
 td p{
   margin-bottom: 0px;
@@ -54,15 +56,19 @@ td p{
   font-size: 25px;
   width: 92%;
   display: inline-block;
+  margin-bottom: 0px;
+  padding-top: 10px;
 }
 .inserted_number {
-  height: 25px;
+  height: 40px;
   border-bottom: 1px solid gray;
   margin-bottom: 2px;
 }
 .inserted_number img{
-  height: 25px;
-  width: 25px;
+  height: 40px;
+  width: 40px;
+  /*height: 25px;
+  width: 25px;*/
   float: right;
 }
 table {
@@ -83,11 +89,36 @@ td p span{
   overflow-y: scroll;
   overflow-x: hidden;
 }
-/*.num_pad{
-  bottom: 0px;
-  position: absolute;
-  width: 99%;
-}*/
+.modal-body {
+  height: 100px;
+}
+a:link {
+  color: #333333;
+  text-decoration: none;
+}
+a:hover {
+  color: #333333;
+  text-decoration: none;
+}
+a:visited {
+  color: #333333;
+  text-decoration: none;
+}
+a:active {
+  color: #333333;
+  text-decoration: none;
+}
+tbody tr {
+  border-bottom: 1px solid lightgray;
+  height: 45px;
+}
+tbody tr:last-child {
+  border-bottom: none;
+}
+tr td:nth-child(even) {
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+}
 
 @media screen and (max-width: 767px){
   .main {
@@ -95,6 +126,45 @@ td p span{
   }
   .contact{
     font-size: 15px;
+    width: 70%
+  }
+  .details {
+    float: right;
+  }
+  .inserted_number img{
+    height: 30px;
+    width: 30px;
+  }
+  .inserted_number {
+    height: 30px;
+  }
+}
+
+@media screen and (max-width: 445px){
+  .inserted_number img{
+    height: 25px;
+    width: 25px;
+  }
+  .inserted_number {
+    height: 25px;
+  }
+  .number {
+    font-size: 20px;
+    padding-top: 5px;
+  }
+}
+
+@media screen and (max-width: 367px){
+  .inserted_number img{
+    height: 20px;
+    width: 20px;
+  }
+  .inserted_number {
+    height: 20px;
+  }
+  .number {
+    font-size: 17px;
+    padding-top: 3px;
   }
 }
 
@@ -104,5 +174,9 @@ td p span{
   }
   .contact{
     font-size: 12px;
+    width: 75%;
+  }
+  .details {
+    float: right;
   }
 }
